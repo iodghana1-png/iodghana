@@ -1,4 +1,4 @@
-// safe event listener attachment (page may use inline onclick so elements may not exist)
+
 const submitBtn = document.getElementById("submitBtn");
 if (submitBtn) submitBtn.addEventListener("click", submitEntry);
 
@@ -14,17 +14,17 @@ if (phoneInput) {
 
 function submitEntry() {
 	let name = document.getElementById("name").value.trim();
-	// preserve leading zero; but normalize to digits only as safety
+	
 	let phone = (document.getElementById("phone").value || '').replace(/\D/g, '');
 	let purpose = document.getElementById("purpose").value;
 
-	// FIRST: require exactly 10 digits
+	
 	if (!phone || phone.length !== 10) {
 		alert("Please enter a 10-digit phone number.");
 		return;
 	}
 
-	// THEN: require it starts with 0
+	
 	if (phone[0] !== '0') {
 		alert("Phone number must start with 0.");
 		return;
@@ -36,7 +36,7 @@ function submitEntry() {
 		return;
 	}
 
-	// final pattern check (redundant but explicit)
+	
 	if (!phonePattern.test(phone)) {
 		alert("Phone number must be exactly 10 digits and start with 0.");
 		return;
